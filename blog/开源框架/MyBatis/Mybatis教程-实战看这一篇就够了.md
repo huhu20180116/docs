@@ -733,3 +733,16 @@ public class UserDaoTest {
 }
 ```
 
+#### 6.6.目录结构
+
+![](https://ws4.sinaimg.cn/large/006tNc79ly1g2ds7uidhjj30d90pgwgq.jpg)
+
+6.7.解决数据库字段名和实体类属性名不一致的问题
+
+查询数据的时候，发现查不到userName的信息，
+User{id=‘2’, userName=‘null’, password=‘123456’, name=‘静静’, age=22, sex=0, birthday=‘1993-09-05’, created=‘2018-06-30 18:22:28.0’, updated=‘2018-06-30 18:22:28.0’}
+原因：数据库的字段名是user_name，POJO中的属性名字是userName
+两端不一致，造成mybatis无法填充对应的字段信息。修改方法：在sql语句中使用别名。
+
+解决方案1：在sql语句中使用别名：
+
