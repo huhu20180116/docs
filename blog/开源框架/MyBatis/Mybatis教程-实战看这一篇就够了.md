@@ -1215,3 +1215,5 @@ public class ExamplePlugin implements Interceptor {
 </plugins>
 ```
 
+上面的插件将会拦截在 Executor 实例中所有的 “update” 方法调用， 这里的 Executor 是负责执行低层映射语句的内部对象。
+
