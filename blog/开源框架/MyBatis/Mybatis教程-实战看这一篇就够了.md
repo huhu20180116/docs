@@ -783,3 +783,16 @@ User{id=‘2’, userName=‘null’, password=‘123456’, name=‘静静’, 
 #### 7.2.使用动态代理改造CRUD
 
 - 修改测试用例的setUp方法
+
+![](https://ws3.sinaimg.cn/large/006tNc79ly1g2ds9qpawfj30q50c4jt1.jpg)
+
+- 执行queryUserAll()方法
+
+```verilog
+org.apache.ibatis.binding.BindingException: Type interface com.zpc.mybatis.dao.UserDao is not known to the MapperRegistry.
+	at org.apache.ibatis.binding.MapperRegistry.getMapper(MapperRegistry.java:47)
+	at org.apache.ibatis.session.Configuration.getMapper(Configuration.java:655)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.getMapper(DefaultSqlSession.java:222)
+at com.zpc.mybatis.test.UserDaoTest.setUp(UserDaoTest.java:32)
+```
+
