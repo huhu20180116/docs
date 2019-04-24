@@ -1387,3 +1387,27 @@ public User login( String userName, String password);
 
 报错：
 
+```verilog
+org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.apache.ibatis.binding.BindingException: Parameter 'userName' not found. Available parameters are [0, 1, param1, param2]
+### Cause: org.apache.ibatis.binding.BindingException: Parameter 'userName' not found. Available parameters are [0, 1, param1, param2]
+```
+
+解决方案一：
+
+```xml
+<select id="login" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user where user_name = #{0} and password = #{1}
+</select>
+```
+
+解决方案二：
+
+```xml
+<select id="login" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user where user_name = #{param1} and password = #{param2}
+</select>
+```
+
+最终解决方案：
+
