@@ -1346,13 +1346,13 @@ select * from “tb_user”;
 
 注意：
 
-{} 只是替换？，相当于PreparedStatement使用占位符去替换参数，可以防止sql注入。
+\#{} 只是替换？，相当于PreparedStatement使用占位符去替换参数，可以防止sql注入。
 
 ${} 是进行字符串拼接，相当于sql语句中的Statement，使用字符串去拼接sql；$可以是sql中的任一部分传入到Statement中，不能防止sql注入。
 
 使用${} 去取出参数值信息，需要使用${value}
 
-{} 只是表示占位，与参数的名字无关，如果只有一个参数，会自动对应。
+\#{} 只是表示占位，与参数的名字无关，如果只有一个参数，会自动对应。
 
 ```java
 /**
@@ -1368,5 +1368,4 @@ public List<User> queryUserByTableName(@Param("tableName") String tableName);
 </select>
 ```
 
-'#'{}多个参数时：
-
+\#{}多个参数时：
