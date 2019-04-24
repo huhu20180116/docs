@@ -1328,3 +1328,12 @@ parameterType：传入的参数类型，可以省略。
 public List<User> queryUserByTableName(String tableName);
 ```
 
+测试输出：
+
+
+
+有问题,报语法错误：相当于执行了这样一条sql:
+select * from “tb_user”;
+显然表名多了引号。
+
+改正：
