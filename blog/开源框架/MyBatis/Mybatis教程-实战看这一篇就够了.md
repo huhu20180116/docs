@@ -1348,7 +1348,7 @@ select * from “tb_user”;
 
 \#{} 只是替换？，相当于PreparedStatement使用占位符去替换参数，可以防止sql注入。
 
-${} 是进行字符串拼接，相当于sql语句中的Statement，使用字符串去拼接sql；$可以是sql中的任一部分传入到Statement中，不能防止sql注入。
+\${} 是进行字符串拼接，相当于sql语句中的Statement，使用字符串去拼接sql；​\$可以是sql中的任一部分传入到Statement中，不能防止sql注入。
 
 使用${} 去取出参数值信息，需要使用${value}
 
@@ -1369,3 +1369,21 @@ public List<User> queryUserByTableName(@Param("tableName") String tableName);
 ```
 
 \#{}多个参数时：
+
+```java
+/**
+ * 登录（直接使用注解指定传入参数名称）
+ *
+ * @param userName
+ * @param password
+ * @return
+ */
+public User login( String userName, String password);
+
+<select id="login" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user where user_name = #{userName} and password = #{password}
+</select>
+```
+
+报错：
+
