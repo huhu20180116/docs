@@ -1136,3 +1136,22 @@ User{id='1', userName='null', password='123456', name='大神', age=20, sex=2, b
 
 开启驼峰匹配：
 
+```verilog
+2018-07-01 13:58:40,599 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] ==>  Preparing: select * from tb_user where id = ? 
+2018-07-01 13:58:40,642 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] ==> Parameters: 1(String)
+2018-07-01 13:58:40,661 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] <==      Total: 1
+User{id='1', userName='bigGod222', password='123456', name='大神', age=20, sex=2, birthday='2018-07-01', created='2018-07-01 13:36:09.0', updated='2018-07-01 13:36:09.0'}
+```
+
+#### 8.3.typeAliases
+
+类型别名是为 Java 类型命名的一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。
+
+```xml
+<typeAliases>
+    <typeAlias type="com.zpc.mybatis.pojo.User" alias="User"/>
+</typeAliases>
+```
+
+缺点：每个pojo类都要去配置。
+解决方案：使用扫描包，扫描指定包下的所有类，扫描之后的别名就是类名（不区分大小写），建议使用的时候和类名一致。
