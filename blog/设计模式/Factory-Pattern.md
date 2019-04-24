@@ -1,12 +1,3 @@
----
-
-title: 设计模式（一）--工厂模式（Factory Pattern）
-date: 2018-11-23 22:33:33
-tags: 设计模式
-categories: 设计模式
-typora-root-url: 设计模式（一）-工厂模式（Factory Pattern）
----
-
 # 工厂模式
 
 工厂模式（Factory Pattern）是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
