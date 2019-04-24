@@ -401,5 +401,21 @@ public class User {
 
 #### 4.7.目录结构
 
+![](https://ws3.sinaimg.cn/large/006tNc79ly1g2ds1fuyeij30dw0kqgnj.jpg)
 
+### 5.分析
+
+#### 5.1.引入日志依赖包（pom.xml）
+
+会自动引入log4j以及slf4j-api
+
+```xml
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.5</version>
+</dependency>
+```
+
+#### 5.2.添加log4j.properties
 
