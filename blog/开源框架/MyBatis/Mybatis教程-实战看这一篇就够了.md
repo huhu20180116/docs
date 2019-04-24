@@ -1097,3 +1097,22 @@ properties配置的属性都是可外部配置且可动态替换的，既可以�
 </dataSource>
 ```
 
+这个例子中的 username 和 password 将会由 properties 元素中设置的相应值来替换。 driver 和 url 属性将会由 config.properties 文件中对应的值来替换。这样就为配置提供了诸多灵活选择。
+
+属性也可以被传递到 SqlSessionFactoryBuilder.build()方法中。例如：
+
+```java
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, props);
+// ... or ...
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, environment, props);
+```
+
+如果属性在不只一个地方进行了配置，那么 MyBatis 将按照下面的顺序来加载：
+1）在 properties 元素体内指定的属性首先被读取。
+2）然后根据 properties 元素中的 resource 属性读取类路径下属性文件或根据 url 属性指定的路径读取属性文件，并覆盖已读取的同名属性。
+3）最后读取作为方法参数传递的属性，并覆盖已读取的同名属性。
+
+因此，通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，最低优先级的是 properties 属性中指定的属性。
+
+#### 8.2.settings设置
+
