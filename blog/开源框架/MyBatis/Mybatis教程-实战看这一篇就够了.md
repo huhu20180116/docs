@@ -1354,7 +1354,7 @@ ${} 是进行字符串拼接，相当于sql语句中的Statement，使用字符�
 
 {} 只是表示占位，与参数的名字无关，如果只有一个参数，会自动对应。
 
-```xml
+```java
 /**
  * 根据表名查询用户信息（直接使用注解指定传入参数名称）
  *
@@ -1367,4 +1367,6 @@ public List<User> queryUserByTableName(@Param("tableName") String tableName);
     select * from ${tableName}
 </select>
 ```
+
+'#'{}多个参数时：
 
