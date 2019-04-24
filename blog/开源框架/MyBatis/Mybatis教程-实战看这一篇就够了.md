@@ -1116,3 +1116,23 @@ SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, environ
 
 #### 8.2.settings设置
 
+![](https://ws2.sinaimg.cn/large/006tNc79ly1g2dsht6u7fj311q09u0wb.jpg)
+
+```xml
+<settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+</settings>
+```
+
+测试：
+没有开启驼峰匹配：
+
+```verilog
+2018-07-01 13:57:56,486 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] ==>  Preparing: select * from tb_user where id = ? 
+2018-07-01 13:57:56,524 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] ==> Parameters: 1(String)
+2018-07-01 13:57:56,568 [main] [com.zpc.mybatis.dao.UserMapper.queryUserById]-[DEBUG] <==      Total: 1
+User{id='1', userName='null', password='123456', name='大神', age=20, sex=2, birthday='2018-07-01', created='2018-07-01 13:36:09.0', updated='2018-07-01 13:36:09.0'}
+```
+
+开启驼峰匹配：
+
