@@ -746,3 +746,40 @@ User{id=‘2’, userName=‘null’, password=‘123456’, name=‘静静’, 
 
 解决方案1：在sql语句中使用别名：
 
+```sql
+<select id="queryUserById" resultType="com.zpc.mybatis.pojo.User">
+   select
+    tuser.id as id,
+    tuser.user_name as userName,
+    tuser.password as password,
+    tuser.name as name,
+    tuser.age as age,
+    tuser.birthday as birthday,
+    tuser.sex as sex,
+    tuser.created as created,
+    tuser.updated as updated
+    from
+    tb_user tuser
+    where tuser.id = #{id};
+</select>
+```
+
+解决方案2： 参考后面的resultMap –mapper具体的配置的时候
+
+解决方案3：参考驼峰匹配 — mybatis-config.xml 的时候
+
+### 7. 动态代理Mapper实现类
+
+#### 7.1.思考上述CRUD中的问题
+
+1、接口->实现类->mapper.xml
+2、实现类中，使用mybatis的方式非常类似
+3、xml中的sql statement 硬编码到java代码中。
+
+思考：能否只写接口，不写实现类。只编写接口和Mapper.xml即可？
+
+因为在dao（mapper）的实现类中对sqlsession的使用方式很类似。因此mybatis提供了接口的动态代理。
+
+#### 7.2.使用动态代理改造CRUD
+
+- 修改测试用例的setUp方法
