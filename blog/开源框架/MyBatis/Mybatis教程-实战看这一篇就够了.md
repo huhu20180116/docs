@@ -1330,10 +1330,11 @@ public List<User> queryUserByTableName(String tableName);
 
 测试输出：
 
-
+![](https://ws2.sinaimg.cn/large/006tNc79ly1g2dt7wu7ngj30a702974b.jpg)
 
 有问题,报语法错误：相当于执行了这样一条sql:
 select * from “tb_user”;
 显然表名多了引号。
 
 改正：
+
