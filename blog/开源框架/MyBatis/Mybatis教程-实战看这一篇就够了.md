@@ -1489,3 +1489,39 @@ User queryUserListByName2(@Param("username2") String username2);
 </sql> 
 ```
 
+则可以在UserMapper.xml中使用它：
+
+```xml
+<select id="queryUserById" resultMap="userResultMap">
+	select <include refid="commonSql"></include> from tb_user where id = #{id}
+</select>
+
+<select id="queryUsersLikeUserName" resultType="User">
+	select <include refid="commonSql"></include> from tb_user where user_name like "%"#{userName}"%"
+</select>
+```
+
+Sql片段也可以定义在单独的.xml文件中如：
+定义CommonSQL.xml：
+
+```xml-dtd
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommonSQL">
+	<sql id="commonSql">
+		id,
+			user_name,
+			password,
+			name,
+			age,
+			sex,
+			birthday,
+			created,
+			updated	
+	</sql>
+</mapper>
+```
+
+使用：
