@@ -1,12 +1,3 @@
----
-title: 设计模式（三）--单例模式（Singleton Pattern）
-date: 2018-12-01 11:26:55
-tags: 
-- 单例模式
-- 设计模式
-categories: 设计模式
----
-
 # 单例模式
 
 单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
