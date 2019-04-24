@@ -1462,3 +1462,30 @@ User queryUserListByName2(@Param("username2") String username2);
 
 ![img](https://ws4.sinaimg.cn/large/006tNc79ly1g2dtg6luozj30o50ctac8.jpg)
 
+使用：
+
+![img](https://ws2.sinaimg.cn/large/006tNc79ly1g2dtgkn0h7j30n003r3z5.jpg)
+
+#### 9.5.sql片段
+
+```xml
+<sql id=””></sql>
+<include refId=”” />
+```
+
+例如在UserMapper.xml中定义如下片段：
+
+```xml
+<sql id="commonSql">
+		id,
+			user_name,
+			password,
+			name,
+			age,
+			sex,
+			birthday,
+			created,
+			updated	
+</sql> 
+```
+
