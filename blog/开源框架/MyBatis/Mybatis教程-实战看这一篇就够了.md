@@ -32,7 +32,9 @@
 CREATE DATABASE ssmdemo;
 ```
 
-创建表：
+- 创建表：
+
+```sql
 DROP TABLE IF EXISTS tb_user;
 CREATE TABLE tb_user (
 id char(32) NOT NULL,
@@ -46,9 +48,16 @@ created datetime DEFAULT NULL,
 updated datetime DEFAULT NULL,
 PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
 
-插入数据：
+- 插入数据：
+
+```sql
 INSERT INTO ssmdemo.tb_user ( userName, password, name, age, sex, birthday, created, updated) VALUES ( ‘zpc’, ‘123456’, ‘鹏程’, ‘22’, ‘1’, ‘1990-09-02’, sysdate(), sysdate());
+```
+
+
+
 INSERT INTO ssmdemo.tb_user ( userName, password, name, age, sex, birthday, created, updated) VALUES ( ‘hj’, ‘123456’, ‘静静’, ‘22’, ‘1’, ‘1993-09-05’, sysdate(), sysdate());
 --------------------- 
 
