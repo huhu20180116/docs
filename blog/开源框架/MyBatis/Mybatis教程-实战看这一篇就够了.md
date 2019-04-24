@@ -123,3 +123,8 @@ public class JDBCTest {
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1g2drtqjhjjj30fy07aq4h.jpg)
 
 官方文档 <http://www.mybatis.org/mybatis-3/getting-started.html>
+
+### 3.Mybaits整体架构
+
+![](https://ws1.sinaimg.cn/large/006tNc79gy1g2drvbeujaj316u0u041n.jpg)
+
