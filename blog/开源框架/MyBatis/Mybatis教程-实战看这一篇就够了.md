@@ -1432,3 +1432,33 @@ sql语句中某个参数进行占位的时候#{}
 
 #### 9.3.面试题（#、$区别）
 
+```java
+/**
+ * #号
+ * @param username1
+ * @return
+ */
+User queryUserListByName1(@Param("username1") String username1);
+
+/**
+ * $号
+ * @param username2
+ * @return
+ */
+User queryUserListByName2(@Param("username2") String username2);
+
+<select id="queryUserListByName1" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user WHERE user_name=#{username1}
+</select>
+
+<select id="queryUserListByName2" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user WHERE user_name='${username2}'//手动加了引号
+</select>
+```
+
+#### 9.4.resultMap
+
+![img](https://ws3.sinaimg.cn/large/006tNc79ly1g2dtfslm9zj30ji099dhs.jpg)
+
+![img](https://ws4.sinaimg.cn/large/006tNc79ly1g2dtg6luozj30o50ctac8.jpg)
+
