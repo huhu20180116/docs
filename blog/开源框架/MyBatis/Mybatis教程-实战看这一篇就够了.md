@@ -120,4 +120,6 @@ public class JDBCTest {
 
 ### 2.MyBatis介绍
 
-![这里写图片描述](https://img-blog.csdn.net/20180701220221392?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![](https://ws4.sinaimg.cn/large/006tNc79gy1g2drtqjhjjj30fy07aq4h.jpg)
+
+官方文档 <http://www.mybatis.org/mybatis-3/getting-started.html>
