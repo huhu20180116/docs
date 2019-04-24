@@ -800,3 +800,158 @@ at com.zpc.mybatis.test.UserDaoTest.setUp(UserDaoTest.java:32)
 mapper.xml namespace
 
 如果希望使用mybatis通过的动态代理的接口，就需要namespace中的值，和需要对应的Mapper(dao)接口的全路径一致。Mapper中Namespace的定义本身是没有限制的，只要不重复即可，但如果使用Mybatis的DAO接口动态代理，则namespace必须为DAO接口的全路径，例如：com.zpc.mybatis.dao.UserDao
+
+```xml
+<mapper namespace="com.zpc.mybatis.dao.UserDao">
+```
+
+#### 7.3.完整的例子
+
+1、创建UserMapper接口（对应原UserDao）
+
+```java
+public interface UserMapper {
+   
+   /**
+    * 登录（直接使用注解指定传入参数名称）
+    * @param userName
+    * @param password
+    * @return
+    */
+   public User login(@Param("userName") String userName, @Param("password") String password);
+   
+   /**
+    * 根据表名查询用户信息（直接使用注解指定传入参数名称）
+    * @param tableName
+    * @return
+    */
+   public List<User> queryUserByTableName(@Param("tableName") String tableName);
+   
+   /**
+    * 根据Id查询用户信息
+    * @param id
+    * @return
+    */
+   public User queryUserById(Long id);
+   
+   /**
+    * 查询所有用户信息
+    * @return
+    */
+   public List<User> queryUserAll();
+   
+   /**
+    * 新增用户信息
+    * @param user
+    */
+   public void insertUser(User user);
+   
+   /**
+    * 根据id更新用户信息
+    * @param user
+    */
+   public void updateUser(User user);
+   
+   /**
+    * 根据id删除用户信息
+    * @param id
+    */
+   public void deleteUserById(Long id);
+}
+```
+
+2、创建UserMapper.xml
+
+```xml-dtd
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 ，为了使用接口动态代理，这里必须是接口的全路径名-->
+<mapper namespace="com.zpc.mybatis.dao.UserMapper">
+    <!--
+       1.#{},预编译的方式preparedstatement，使用占位符替换，防止sql注入，一个参数的时候，任意参数名可以接收
+       2.${},普通的Statement，字符串直接拼接，不可以防止sql注入，一个参数的时候，必须使用${value}接收参数
+     -->
+    <select id="queryUserByTableName" resultType="com.zpc.mybatis.pojo.User">
+        select * from ${tableName}
+    </select>
+
+    <select id="login" resultType="com.zpc.mybatis.pojo.User">
+        select * from tb_user where user_name = #{userName} and password = #{password}
+    </select>
+
+    <!-- statement，内容：sql语句。
+       id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
+       resultType：sql语句查询结果集的封装类型，使用动态代理之后和方法的返回类型一致；resultMap：二选一
+       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
+     -->
+    <select id="queryUserById" resultType="com.zpc.mybatis.pojo.User">
+        select * from tb_user where id = #{id}
+    </select>
+    <select id="queryUserAll" resultType="com.zpc.mybatis.pojo.User">
+        select * from tb_user
+    </select>
+    <!-- 新增的Statement
+       id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
+       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
+       useGeneratedKeys:开启主键回写
+       keyColumn：指定数据库的主键
+       keyProperty：主键对应的pojo属性名
+     -->
+    <insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id"
+            parameterType="com.zpc.mybatis.pojo.User">
+        INSERT INTO tb_user (
+        id,
+        user_name,
+        password,
+        name,
+        age,
+        sex,
+        birthday,
+        created,
+        updated
+        )
+        VALUES
+        (
+        null,
+        #{userName},
+        #{password},
+        #{name},
+        #{age},
+        #{sex},
+        #{birthday},
+        NOW(),
+        NOW()
+        );
+    </insert>
+    <!-- 
+       更新的statement
+       id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
+       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
+     -->
+    <update id="updateUser" parameterType="com.zpc.mybatis.pojo.User">
+        UPDATE tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null">user_name = #{userName},</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+            <if test="birthday!=null">birthday = #{birthday},</if>
+            updated = now(),
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+    <!-- 
+       删除的statement
+       id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
+       parameterType：参数的类型，使用动态代理之后和方法的参数类型一致
+     -->
+    <delete id="deleteUserById" parameterType="java.lang.String">
+        delete from tb_user where id=#{id}
+    </delete>
+</mapper>
+```
+
