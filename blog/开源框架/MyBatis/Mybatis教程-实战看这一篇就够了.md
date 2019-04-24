@@ -1244,3 +1244,29 @@ MyBatis 可以配置成适应多种环境，例如，开发、测试和生产环
 </mappers>
 ```
 
+这里所谓的mapper接口路径。实际上就是dao的接口路径。在mybatis中，通常把dao的包叫做mapper。类名，也叫做mapper
+1、定义一个接口。
+2、在接口所在的包中定义mapper.xml，并且要求xml文件和interface的名称要相同。
+3、在mybatis-config.xml 中通过class路径，引入mapper（注解方式）。要求mapper.xml 中的名称空间是类的接口的全路径。
+
+注解方式：
+
+```xml
+<mappers>
+    <mapper resource="mappers/MyMapper.xml"/>
+    <mapper resource="mappers/UserDaoMapper.xml"/>
+    <!--注解方式可以使用如下配置方式-->
+    <mapper class="com.zpc.mybatis.dao.UserMapper"/>
+</mappers>
+```
+
+问题：
+1、mapper.xml 和 java文件没有分离。 之后的教程讲述和spring整合之后解决。
+2、需要一个一个的去加载mapper。
+
+当然也可以使用包扫描（必须使用注解方式，即在接口方法上使用注解，如@Select("select * from tb_user ")）：
+
+缺点：
+1、如果包的路径有很多？
+2、mapper.xml和mapper.java没有分离。
+spring整合的时候解决。
