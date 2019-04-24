@@ -239,5 +239,25 @@ public class JDBCTest {
 
 #### 4.5.构建sqlSessionFactory（MybatisTest.java）
 
+```java
+// 指定全局配置文件
+String resource = "mybatis-config.xml";
+// 读取配置文件
+InputStream inputStream = Resources.getResourceAsStream(resource);
+// 构建sqlSessionFactory
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+```
+
+#### 4.6.打开sqlSession会话，并执行sql（MybatisTest.java）
+
+```java
+// 获取sqlSession
+SqlSession sqlSession = sqlSessionFactory.openSession();
+// 操作CRUD，第一个参数：指定statement，规则：命名空间+“.”+statementId
+// 第二个参数：指定传入sql的参数：这里是用户id
+User user = sqlSession.selectOne("MyMapper.selectUser", 1);
+System.out.println(user);
+```
+
 
 
