@@ -1411,3 +1411,24 @@ org.apache.ibatis.exceptions.PersistenceException:
 
 最终解决方案：
 
+```java
+/**
+ * 登录（直接使用注解指定传入参数名称）
+ *
+ * @param userName
+ * @param password
+ * @return
+ */
+public User login(@Param("userName") String userName, @Param("password") String password);
+
+<select id="login" resultType="com.zpc.mybatis.pojo.User">
+    select * from tb_user where user_name = #{userName} and password = #{password}
+</select>
+```
+
+通常在方法的参数列表上加上一个注释@Param(“xxxx”) 显式指定参数的名字，然后通过\${“xxxx”}或#{“xxxx”}
+sql语句动态生成的时候，使用${};
+sql语句中某个参数进行占位的时候#{}
+
+#### 9.3.面试题（#、$区别）
+
