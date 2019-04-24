@@ -1272,7 +1272,7 @@ MyBatis 可以配置成适应多种环境，例如，开发、测试和生产环
 
 spring整合的时候解决。
 
-9.Mapper XML文件详解
+### 9.Mapper XML文件详解
 
 #### 9.1.CRUD标签
 
@@ -1284,7 +1284,7 @@ id属性：当前名称空间下的statement的唯一标识。必须。要求id�
 resultType：将结果集映射为java的对象类型。必须（和 resultMap 二选一）
 parameterType：传入参数类型。可以省略
 
-9.1.2.insert
+##### 9.1.2.insert
 
 insert 的几个属性说明：
 id：唯一标识，随便写，在同一个命名空间下保持唯一，使用动态代理之后要求和方法名保持一致
@@ -1294,22 +1294,37 @@ keyColumn：指定数据库的主键
 keyProperty：主键对应的pojo属性名
 标签内部：具体的sql语句。
 
-9.1.3.update
+##### 9.1.3.update
 
 id属性：当前名称空间下的statement的唯一标识(必须属性)；
 parameterType：传入的参数类型，可以省略。
 标签内部：具体的sql语句。
 
-9.1.4.delete
+##### 9.1.4.delete
 
 delete 的几个属性说明：
 id属性：当前名称空间下的statement的唯一标识(必须属性)；
 parameterType：传入的参数类型，可以省略。
 标签内部：具体的sql语句。
 
-9.2.#{}和${}
+#### 9.2.#{}和${}
 
 场景：数据库有两个一模一样的表。历史表，当前表
 查询表中的信息，有时候从历史表中去查询数据，有时候需要去新的表去查询数据。
 
 希望使用1个方法来完成操作。
+
+```xml
+<select id="queryUserByTableName" resultType="com.zpc.mybatis.pojo.User">
+    select * from #{tableName}
+</select>
+
+/**
+ * 根据表名查询用户信息（直接使用注解指定传入参数名称）
+ *
+ * @param tableName
+ * @return
+ */
+public List<User> queryUserByTableName(String tableName);
+```
+
