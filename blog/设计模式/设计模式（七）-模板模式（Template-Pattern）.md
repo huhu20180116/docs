@@ -1,14 +1,3 @@
----
-title: 设计模式（七）-模板模式（Template-Pattern）
-typora-root-url: 设计模式（七）-模板模式（Template-Pattern）
-typora-copy-images-to: 设计模式（七）-模板模式（Template-Pattern）
-date: 2018-12-29 22:45:06
-tags:
-- 设计模式
-- 模板模式
-categories: 设计模式
----
-
 在**模板模式（Template Pattern）**中，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。这种类型的设计模式属于行为型模式。
 
 | 归类       | 特点                                                         | 穷举                |
