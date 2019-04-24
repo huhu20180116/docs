@@ -1206,4 +1206,12 @@ public class ExamplePlugin implements Interceptor {
 
 配置：
 
+```xml
+<!-- mybatis-config.xml -->
+<plugins>
+  <plugin interceptor="org.mybatis.example.ExamplePlugin">
+    <property name="someProperty" value="100"/>
+  </plugin>
+</plugins>
 ```
+
