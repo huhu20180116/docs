@@ -796,3 +796,7 @@ org.apache.ibatis.binding.BindingException: Type interface com.zpc.mybatis.dao.U
 at com.zpc.mybatis.test.UserDaoTest.setUp(UserDaoTest.java:32)
 ```
 
+分析原因，在UserMapper.xml中配置接口的全路径
+mapper.xml namespace
+
+如果希望使用mybatis通过的动态代理的接口，就需要namespace中的值，和需要对应的Mapper(dao)接口的全路径一致。Mapper中Namespace的定义本身是没有限制的，只要不重复即可，但如果使用Mybatis的DAO接口动态代理，则namespace必须为DAO接口的全路径，例如：com.zpc.mybatis.dao.UserDao
