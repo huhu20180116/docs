@@ -116,5 +116,8 @@ public class JDBCTest {
 
 #### 1.5.JDBC缺点分析
 
+![](https://ws1.sinaimg.cn/large/006tNc79ly1g2drssnqq0j30pg0hh0x7.jpg)
 
+### 2.MyBatis介绍
 
+![这里写图片描述](https://img-blog.csdn.net/20180701220221392?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
