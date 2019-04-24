@@ -259,5 +259,147 @@ User user = sqlSession.selectOne("MyMapper.selectUser", 1);
 System.out.println(user);
 ```
 
+- 完整代码：
+  MybatisTest.java
+
+```java
+mport com.zpc.test.pojo.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.InputStream;
+
+public class MybatisTest {
+   public static void main(String[] args) throws Exception {
+      // 指定全局配置文件
+      String resource = "mybatis-config.xml";
+      // 读取配置文件
+      InputStream inputStream = Resources.getResourceAsStream(resource);
+      // 构建sqlSessionFactory
+      SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+      // 获取sqlSession
+      SqlSession sqlSession = sqlSessionFactory.openSession();
+      try {
+         // 操作CRUD，第一个参数：指定statement，规则：命名空间+“.”+statementId
+         // 第二个参数：指定传入sql的参数：这里是用户id
+         User user = sqlSession.selectOne("MyMapper.selectUser", 1);
+         System.out.println(user);
+      } finally {
+         sqlSession.close();
+      }
+   }
+}
+```
+
+User.java
+
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class User {
+    private String id;
+    private String userName;
+    private String password;
+    private String name;
+    private Integer age;
+    private Integer sex;
+    private Date birthday;
+    private String created;
+    private String updated;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", birthday='" + new SimpleDateFormat("yyyy-MM-dd").format(birthday) + '\'' +
+                ", created='" + created + '\'' +
+                ", updated='" + updated + '\'' +
+                '}';
+    }
+}
+```
+
+#### 4.7.目录结构
+
 
 
