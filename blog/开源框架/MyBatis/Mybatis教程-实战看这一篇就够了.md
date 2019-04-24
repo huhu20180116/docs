@@ -1338,3 +1338,33 @@ select * from “tb_user”;
 
 改正：
 
+```xml
+<select id="queryUserByTableName" resultType="com.zpc.mybatis.pojo.User">
+    select * from ${tableName}
+</select>
+```
+
+注意：
+
+{} 只是替换？，相当于PreparedStatement使用占位符去替换参数，可以防止sql注入。
+
+${} 是进行字符串拼接，相当于sql语句中的Statement，使用字符串去拼接sql；$可以是sql中的任一部分传入到Statement中，不能防止sql注入。
+
+使用${} 去取出参数值信息，需要使用${value}
+
+{} 只是表示占位，与参数的名字无关，如果只有一个参数，会自动对应。
+
+```xml
+/**
+ * 根据表名查询用户信息（直接使用注解指定传入参数名称）
+ *
+ * @param tableName
+ * @return
+ */
+public List<User> queryUserByTableName(@Param("tableName") String tableName);
+
+<select id="queryUserByTableName" resultType="com.zpc.mybatis.pojo.User">
+    select * from ${tableName}
+</select>
+```
+
