@@ -1,14 +1,3 @@
----
-title: 设计模式（六）-策略模式（Strategy-Pattern）
-typora-root-url: 设计模式（六）-策略模式（Strategy-Pattern）
-typora-copy-images-to: 设计模式（六）-策略模式（Strategy-Pattern）
-date: 2018-12-29 21:20:48
-tags: 
-- 设计模式
-- 策略模式
-categories: 设计模式
----
-
 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。
 
 Spring 中在实例化对象的时候用到 Strategy 模式，在 SimpleInstantiationStrategy 有使用。
