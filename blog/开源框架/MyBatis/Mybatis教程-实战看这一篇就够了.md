@@ -187,5 +187,57 @@ public class JDBCTest {
   </configuration>
 ```
 
+#### 4.3.配置Map.xml（MyMapper.xml）
+
+```xml-dtd
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="MyMapper">
+   <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+      resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
+    -->
+   <select id="selectUser" resultType="com.zpc.mybatis.User">
+      select * from tb_user where id = #{id}
+   </select>
+</mapper>
+```
+
+#### 4.4.修改全局配置文件（mybatis-config.xml）
+
+配上MyMapper.xml
+
+```xml-dtd
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 根标签 -->
+<configuration>
+   <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
+   <environments default="test">
+      <!-- id：唯一标识 -->
+      <environment id="test">
+         <!-- 事务管理器，JDBC类型的事务管理器 -->
+         <transactionManager type="JDBC" />
+         <!-- 数据源，池类型的数据源 -->
+         <dataSource type="POOLED">
+            <property name="driver" value="com.mysql.jdbc.Driver" />
+            <property name="url" value="jdbc:mysql://127.0.0.1:3306/ssmdemo" />
+            <property name="username" value="root" />
+            <property name="password" value="123456" />
+         </dataSource>
+      </environment>
+   </environments>
+   <mappers>
+     <mapper resource="mappers/MyMapper.xml" />
+   </mappers>
+</configuration>
+```
+
+#### 4.5.构建sqlSessionFactory（MybatisTest.java）
+
 
 
