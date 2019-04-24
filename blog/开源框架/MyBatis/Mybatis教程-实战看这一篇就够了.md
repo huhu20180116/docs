@@ -1155,3 +1155,30 @@ User{id='1', userName='bigGod222', password='123456', name='大神', age=20, sex
 
 缺点：每个pojo类都要去配置。
 解决方案：使用扫描包，扫描指定包下的所有类，扫描之后的别名就是类名（不区分大小写），建议使用的时候和类名一致。
+
+```xml
+<typeAliases>
+    <!--type:实体类的全路径。alias:别名，通常首字母大写-->
+    <!--<typeAlias type="com.zpc.mybatis.pojo.User" alias="User"/>-->
+    <package name="com.zpc.mybatis.pojo"/>
+</typeAliases>
+```
+
+Mybatis已经为普通的 Java 类型内建了许多相应的类型别名。它们都是大小写不敏感的.
+
+![](https://ws1.sinaimg.cn/large/006tNc79ly1g2dskgr867j30mq0agdhn.jpg)
+
+8.4.typeHandlers（类型处理器）
+
+无论是 MyBatis 在预处理语句（PreparedStatement）中设置一个参数时，还是从结果集中取出一个值时， 都会用类型处理器将获取的值以合适的方式转换成 Java 类型。可以重写类型处理器或创建你自己的类型处理器来处理不支持的或非标准的类型。
+
+8.5.plugins（插件）拦截器
+
+MyBatis 允许你在已映射语句执行过程中的某一点进行拦截调用。默认情况下，MyBatis 允许使用插件来拦截的方法调用包括：
+Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)
+ParameterHandler (getParameterObject, setParameters)
+ResultSetHandler (handleResultSets, handleOutputParameters)
+StatementHandler (prepare, parameterize, batch, update, query)
+
+现在一些MyBatis 插件比如PageHelper都是基于这个原理，有时为了监控sql执行效率，也可以使用插件机制
+原理：
