@@ -967,6 +967,7 @@ public interface UserMapper {
 
 4、创建UserMapper测试用例
 
+```java
 import com.zpc.mybatis.dao.UserMapper;
 import com.zpc.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
@@ -983,7 +984,7 @@ import java.util.List;
 public class UserMapperTest {
 
     public UserMapper userMapper;
-    
+
     @Before
     public void setUp() throws Exception {
         // 指定配置文件
@@ -994,14 +995,14 @@ public class UserMapperTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         // 获取sqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
-    
+
         // 1. 映射文件的命名空间（namespace）必须是mapper接口的全路径
         // 2. 映射文件的statement的id必须和mapper接口的方法名保持一致
         // 3. Statement的resultType必须和mapper接口方法的返回类型一致
         // 4. statement的parameterType必须和mapper接口方法的参数类型一致（不一定）
         this.userMapper = sqlSession.getMapper(UserMapper.class);
     }
-    
+
     @Test
     public void testQueryUserByTableName() {
         List<User> userList = this.userMapper.queryUserByTableName("tb_user");
@@ -1009,17 +1010,17 @@ public class UserMapperTest {
             System.out.println(user);
         }
     }
-    
+
     @Test
     public void testLogin() {
         System.out.println(this.userMapper.login("hj", "123456"));
     }
-    
+
     @Test
     public void testQueryUserById() {
         System.out.println(this.userMapper.queryUserById("1"));
     }
-    
+
     @Test
     public void testQueryUserAll() {
         List<User> userList = this.userMapper.queryUserAll();
@@ -1027,7 +1028,7 @@ public class UserMapperTest {
             System.out.println(user);
         }
     }
-    
+
     @Test
     public void testInsertUser() {
         User user = new User();
@@ -1040,7 +1041,7 @@ public class UserMapperTest {
         this.userMapper.insertUser(user);
         System.out.println(user.getId());
     }
-    
+
     @Test
     public void testUpdateUser() {
         User user = new User();
@@ -1052,8 +1053,17 @@ public class UserMapperTest {
         user.setId("1");
         this.userMapper.updateUser(user);
     }
-    
+
     @Test
     public void testDeleteUserById() {
         this.userMapper.deleteUserById("1");
     }
+}
+```
+
+目录结构：
+
+![](https://ws1.sinaimg.cn/large/006tNc79ly1g2dsefr5a9j30ce0me3zv.jpg)
+
+#### 7.4.动态代理总结
+
