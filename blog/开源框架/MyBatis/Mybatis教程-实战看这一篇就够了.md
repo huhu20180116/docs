@@ -624,3 +624,26 @@ public class UserDaoImpl implements UserDao {
 </mapper>
 ```
 
+在mybatis-config.xml中添加配置：
+
+```xml
+<mappers>
+    <mapper resource="mappers/MyMapper.xml"/>
+    <mapper resource="mappers/UserDaoMapper.xml"/>
+</mappers>
+```
+
+#### 6.4.添加UserDao的测试用例
+
+Pom文件中添加junit依赖
+
+```xml
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+</dependency>
+```
+
+按住Alt+Enter,选择create test
+
