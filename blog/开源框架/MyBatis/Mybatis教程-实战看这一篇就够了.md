@@ -442,3 +442,59 @@ User{id='1', userName='zpc', password='123456', name='鹏程', age=25, sex=1, bi
 2018-06-30 19:53:37,955 [main] [org.apache.ibatis.datasource.pooled.PooledDataSource]-[DEBUG] Returned connection 2094411587 to pool.
 ```
 
+#### 5.3.MyBatis使用步骤总结
+
+1)配置mybatis-config.xml 全局的配置文件 (1、数据源，2、外部的mapper)
+2)创建SqlSessionFactory
+3)通过SqlSessionFactory创建SqlSession对象
+4)通过SqlSession操作数据库 CRUD
+5)调用session.commit()提交事务
+
+### 6.完整的CRUD操作
+
+#### 6.1.创建UserDao接口
+
+```java
+import com.zpc.mybatis.pojo.User;
+import java.util.List;
+
+public interface UserDao {
+
+    /**
+     * 根据id查询用户信息
+     *
+     * @param id
+     * @return
+     */
+    public User queryUserById(String id);
+
+    /**
+     * 查询所有用户信息
+     *
+     * @return
+     */
+    public List<User> queryUserAll();
+
+    /**
+     * 新增用户
+     *
+     * @param user
+     */
+    public void insertUser(User user);
+
+    /**
+     * 更新用户信息
+     *
+     * @param user
+     */
+    public void updateUser(User user);
+
+    /**
+     * 根据id删除用户信息
+     *
+     * @param id
+     */
+    public void deleteUser(String id);
+}
+```
+
