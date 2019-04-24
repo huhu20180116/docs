@@ -1079,3 +1079,21 @@ mybatis-config.xml讲究严格的顺序，具体顺序遵循文档的顺序
 
 properties配置的属性都是可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递。例如：
 
+```xml
+<properties resource="org/mybatis/example/config.properties">
+  <property name="username" value="dev_user"/>
+  <property name="password" value="F2Fa3!33TYyg"/>
+</properties>
+```
+
+然后其中的属性就可以在整个配置文件中被用来替换需要动态配置的属性值。比如:
+
+```xml
+<dataSource type="POOLED">
+  <property name="driver" value="${driver}"/>
+  <property name="url" value="${url}"/>
+  <property name="username" value="${username}"/>
+  <property name="password" value="${password}"/>
+</dataSource>
+```
+
