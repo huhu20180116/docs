@@ -1168,11 +1168,11 @@ Mybatis已经为普通的 Java 类型内建了许多相应的类型别名。它�
 
 ![](https://ws1.sinaimg.cn/large/006tNc79ly1g2dskgr867j30mq0agdhn.jpg)
 
-8.4.typeHandlers（类型处理器）
+#### 8.4.typeHandlers（类型处理器）
 
 无论是 MyBatis 在预处理语句（PreparedStatement）中设置一个参数时，还是从结果集中取出一个值时， 都会用类型处理器将获取的值以合适的方式转换成 Java 类型。可以重写类型处理器或创建你自己的类型处理器来处理不支持的或非标准的类型。
 
-8.5.plugins（插件）拦截器
+#### 8.5.plugins（插件）拦截器
 
 MyBatis 允许你在已映射语句执行过程中的某一点进行拦截调用。默认情况下，MyBatis 允许使用插件来拦截的方法调用包括：
 Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)
@@ -1181,4 +1181,28 @@ ResultSetHandler (handleResultSets, handleOutputParameters)
 StatementHandler (prepare, parameterize, batch, update, query)
 
 现在一些MyBatis 插件比如PageHelper都是基于这个原理，有时为了监控sql执行效率，也可以使用插件机制
+
 原理：
+
+![img](https://ws4.sinaimg.cn/large/006tNc79ly1g2dslfoxroj30ll0a674q.jpg)
+
+自定义拦截器：
+
+```java
+// ExamplePlugin.java
+@Intercepts({@Signature(
+  type= Executor.class,
+  method = "update",
+  args = {MappedStatement.class,Object.class})})
+public class ExamplePlugin implements Interceptor {
+  public Object intercept(Invocation invocation) throws Throwable {
+    return invocation.proceed();
+  }
+  public Object plugin(Object target) {
+    return Plugin.wrap(target, this);
+  }
+  public void setProperties(Properties properties) {
+  }
+}
+```
+
