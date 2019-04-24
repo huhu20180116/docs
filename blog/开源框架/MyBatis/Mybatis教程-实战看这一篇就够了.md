@@ -1525,3 +1525,24 @@ Sql片段也可以定义在单独的.xml文件中如：
 ```
 
 使用：
+
+```xml
+<select id="queryUserById" resultMap="userResultMap">
+		select <include refid="CommonSQL.commonSql"></include> from tb_user where id = #{id}
+	</select>
+	
+	<select id="queryUsersLikeUserName" resultType="User">
+		select <include refid="CommonSQL.commonSql"></include> from tb_user where user_name like "%"#{userName}"%"
+	</select>
+```
+
+当然要完成这个功能还需要在全局配置文件mybatis-config.xml中引入该外部配置文件：
+
+```xml
+<mappers>
+		<mapper resource="CommonSQL.xml"/>
+		<!-- 开启mapper接口的包扫描，基于class的配置方式 -->
+		<package name="com.zpc.mybatis.mapper"/>
+</mappers>
+```
+
