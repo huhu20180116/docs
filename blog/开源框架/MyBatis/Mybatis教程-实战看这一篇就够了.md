@@ -1188,14 +1188,12 @@ StatementHandler (prepare, parameterize, batch, update, query)
 
 自定义拦截器：
 
+ExamplePlugin.java
+
 ```java
-// ExamplePlugin.java
-@Intercepts({@Signature(
-  type= Executor.class,
-  method = "update",
-  args = {MappedStatement.class,Object.class})})
+@Intercepts({@Signature(type= Executor.class,method = "update",args = {MappedStatement.class,Object.class})})
 public class ExamplePlugin implements Interceptor {
-  public Object intercept(Invocation invocation) throws Throwable {
+	public Object intercept(Invocation invocation) throws Throwable {
     return invocation.proceed();
   }
   public Object plugin(Object target) {
@@ -1206,3 +1204,6 @@ public class ExamplePlugin implements Interceptor {
 }
 ```
 
+配置：
+
+```
