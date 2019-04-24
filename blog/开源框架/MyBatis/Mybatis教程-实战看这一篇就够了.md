@@ -1067,3 +1067,15 @@ public class UserMapperTest {
 
 #### 7.4.动态代理总结
 
+![](https://ws4.sinaimg.cn/large/006tNc79ly1g2dseyam0bj30jq07wdhq.jpg)
+
+### 8.mybatis-config.xml详解
+
+mybatis-config.xml讲究严格的顺序，具体顺序遵循文档的顺序
+
+![](https://ws2.sinaimg.cn/large/006tNc79ly1g2dsfkfa74j30y20ftgoe.jpg)
+
+#### 8.1.properties属性读取外部资源
+
+properties配置的属性都是可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递。例如：
+
