@@ -1,10 +1,10 @@
 ![logo](_media/icon.svg)
 
-# docsify
+# Lucas Yan
 
-> 互联网 Java 工程师进阶知识点.
+> 后端技术栈
 
-* 高并发、分布式、高可用、微服务
+*   设计模式、开源框架、并发编程、分布式、微服务、性能优化
 
 [GitHub](https://github.com/yanzhaoyao/)
 [Get Started](#quick-start)
