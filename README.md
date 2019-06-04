@@ -2,7 +2,7 @@
 
 ##### 设计模式
 
-- 
+- //todo
 
 ##### 开源框架
 
@@ -20,10 +20,10 @@
 
 ##### 分布式
 
-- 
+- //todo
 
 ##### 存储 Storage
-- MySQL
+- [MySQL](blog/性能优化/mysql/)
 - Redis
 - MongoDB
 
