@@ -34,7 +34,8 @@ Java知识学习总结
 ## 存储 Storage
 ### MySQL
 
-- [理解Mysql底层B+tree索引机制](性能优化/mysql/理解Mysql底层B+tree索引机制)[MySQL插拔式的存储引擎](blog/性能优化/mysql/MySQL插拔式的存储引擎)
+- [理解Mysql底层B+tree索引机制](性能优化/mysql/理解Mysql底层B+tree索引机制)
+- [MySQL插拔式的存储引擎](性能优化/mysql/MySQL插拔式的存储引擎)
 - [MYSQL查询优化详解](性能优化/mysql/MySQL查询优化详解)
 - [MySQL如何定位慢sql](性能优化/mysql/MySQL如何定位慢sql)
 - [MySQL事务](性能优化/mysql/MySQL事务)

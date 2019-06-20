@@ -20,14 +20,19 @@ update user_account set balance = balance +1000 where userID = 1;
 ```
 
 mysql中如何开启事务：
-`begin` / start `transaction` -- 手工
+
+`begin` / `start` `transaction` -- 手工
+
 `commit` / `rollback` -- 事务提交或回滚
+
 `set session autocommit = on/off;` -- 设定事务是否自动开启
 
 JDBC 编程：
+
 `connection.setAutoCommit（boolean）;`
 
 Spring 事务AOP编程：
+
 `expression=execution（com.xxx.service.*.*(..)）`
 
 # 事务的ACID特性
@@ -90,7 +95,7 @@ Spring 事务AOP编程：
 2、事务B 新增id为2，name为‘Bob’，age为22的用户
 3、事务A 再次查询age > 15的用户，获取到两个用户
 （1和3一个事务 ，要理解成不可分割的最小执行单元）
-此时事务A两次查询不一样，在一个事务重复读数据的数量一样，产生了幻觉，所谓的 不可重复读
+此时事务A两次查询不一样，在一个事务重复读数据的数量一样，产生了幻觉，所谓的 幻读
 ```
 
 ![120910194139040](../../images/optimize/mysql/120910194139040.Png)
