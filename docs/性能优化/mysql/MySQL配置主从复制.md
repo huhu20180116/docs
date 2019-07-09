@@ -13,7 +13,9 @@ MySQL基于binlog的主从复制原理
 一主一从
 
 场景描述：
+
 主数据库服务器：192.168.12.66，MySQL5.7已经安装，已正常启动。
+
 从数据库服务器：192.168.12.88，MySQL5.7已经安装，已正常启动。
 
 ## Master操作：
@@ -35,9 +37,9 @@ GRANT REPLICATION SLAVE ON *.* TO 'm2ssync'@'%' IDENTIFIED BY 'Qq123!@#';
 3.指定服务ID，开启binlog日志记录，在/etc/my.cnf中加入 
 
 ```mysql
-server-id=66				#一般定义成host主机名
+server-id=66							#一般定义成host主机名
 log-bin=db_store_binlog		#master生成的binlog文件名称
-binlog-do-db=db_store		#binlog要记录的表名称
+binlog-do-db=db_store			#binlog要记录的表名称
 ```
 
 4.重启mysql服务
@@ -188,26 +190,26 @@ Query OK, 0 rows affected (0.01 sec)
 
 ## 延迟是怎么产生的
 
-1，当master  tps高于slave的sql线程所能承受的范围
+1. 当master  tps高于slave的sql线程所能承受的范围
+2. 网络原因
 
-2，网络原因
-
-3，磁盘读写耗时
+3. 磁盘读写耗时
 
 ## 判断延迟？
 
-1，show  slave status \G;  `sends_behind_master  0`等于0时不延迟
+1. show  slave status \G;  `sends_behind_master  0`等于0时不延迟
 
-2,  mk-heartbeat  timestamp进行时间戳的判断
+2. mk-heartbeat  timestamp进行时间戳的判断
+
 
 ## 我们怎么解决延迟问题
 
-1，配置更高的硬件资源
+1. 配置更高的硬件资源
 
-2，把IOthread  改变成 多线程的方式
+2. 把IOthread  改变成 多线程的方式
 
-​	mysql5.6  库进行多线程的方式
+   mysql5.6  库进行多线程的方式
 
-​	GTID进行多线程的方式
+   GTID进行多线程的方式
 
-3， 应用程序自己去判断（mycat有这么方案）
+3. 应用程序自己去判断（mycat有这么方案）

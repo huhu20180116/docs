@@ -16,7 +16,7 @@ ex1：
 		 ## 在未做commit/rollback操作之前
 		 ## 在其他的事务我们能不能进行对应数据的查询（特别是加上了X锁的数据）
 	tx2: select * from users where id > 1;
-	 	 select * from users where id = 1;
+			 select * from users where id = 1;
 ex2：
 	tx1: begin
 		 select * from users where id =1 ;
@@ -38,13 +38,13 @@ MVCC：
 
 ## 2. MVCC实现
 
-​	MVCC是通过保存数据在某个时间点的快照来实现的. 不同存储引擎的MVCC. 不同存储引擎的MVCC实现是不同的,典型的有乐观并发控制和悲观并发控制.
+​	MVCC是通过保存数据在某个时间点的快照来实现的. 不同存储引擎的MVCC. 实现是不同的,典型的有乐观并发控制和悲观并发控制.
 
 ## 3. MVCC的具体实现分析
 
-下面,我们通过InnoDB的MVCC实现来分析MVCC使怎样进行并发控制的
+下面,我们通过InnoDB的MVCC实现来分析MVCC是怎样进行并发控制的
 
-​	InnoDB的MVCC,是通过在每行记录后面保存两个隐藏的列来实现的,这两个列，分别保存了这个行的创建时间（`DB_TRX_ID`），一个保存的是行的删除时间（DB_ROLL_PT）。这里存储的并不是实际的时间值,而是系统版本号(可以理解为事务的ID)，每开始一个新的事务，系统版本号就会自动递增，事务开始时刻的系统版本号会作为事务的ID.下面看一下在**REPEATABLE READ**隔离级别下,MVCC具体是如何操作的.
+InnoDB的MVCC,是通过在每行记录后面保存两个隐藏的列来实现的,这两个列，分别保存了这个行的创建时间（`DB_TRX_ID`），一个保存的是行的删除时间（DB_ROLL_PT）。这里存储的并不是实际的时间值,而是系统版本号(可以理解为事务的ID)，每开始一个新的事务，系统版本号就会自动递增，事务开始时刻的系统版本号会作为事务的ID.下面看一下在**REPEATABLE READ**隔离级别下,MVCC具体是如何操作的.
 
 ### 3.1 MySQL中MVCC逻辑流程
 

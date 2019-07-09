@@ -37,6 +37,7 @@ InnoDB存储引擎支持行锁和表锁（另类的行锁）
 ​	意向锁共享锁（表锁）：Intention Shared Locks
 
 ​	意向锁排它锁（表锁）：Intention Exclusive Locks
+
 **自增锁**
 
 ​	AUTO-INC Locks
@@ -199,7 +200,7 @@ InnoDB的行锁是通过给索引上的索引项加锁来实现的。
 
 测试，换用Navicat客户端测试
 
-看一下users标的DDL
+看一下users表的DDL
 
 `phoneNum`是一个普通的字段
 

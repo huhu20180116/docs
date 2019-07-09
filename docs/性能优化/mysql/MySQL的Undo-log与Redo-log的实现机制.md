@@ -70,8 +70,7 @@ Redo log的持久：
 
 ## 2.2 Redo Log的落盘配置
 
-​	指定Redo log 记录在{datadir}/ib_logfile1&ib_logfile2 可通过`innodb_log_group_home_dir` 配置指定
-目录存储
+​	指定Redo log 记录在{datadir}/ib_logfile1&ib_logfile2 可通过`innodb_log_group_home_dir` 配置指定目录存储
 
 ```mysql
 mysql> show variables like "innodb_log_group_home_dir";
@@ -85,14 +84,15 @@ mysql> show variables like "innodb_log_group_home_dir";
 mysql>
 ```
 
-一旦事务成功提交且数据持久化落盘之后，此时Redo log中的对应事务数据记录就失去了意义，所
-以Redo log的写入是日志文件循环写入的
+一旦事务成功提交且数据持久化落盘之后，此时Redo log中的对应事务数据记录就失去了意义，所以Redo log的写入是日志文件循环写入的
 
-​	指定Redo log日志文件组中的数量 `innodb_log_files_in_group` 默认为2
-​	指定Redo log每一个日志文件最大存储量`innodb_log_file_size` 默认48M
-​	指定Redo log在cache/buffer中的buffer池大小`innodb_log_buffer_size` 默认16M
+指定Redo log日志文件组中的数量 `innodb_log_files_in_group` 默认为2
 
-Redo buffer 持久化Redo log的策略， `Innodb_flush_log_at_trx_commit`：
+指定Redo log每一个日志文件最大存储量`innodb_log_file_size` 默认48M
+
+指定Redo log在cache/buffer中的buffer池大小`innodb_log_buffer_size` 默认16M
+
+Redo buffer 持久化Redo log的策略`Innodb_flush_log_at_trx_commit`：
 
 ```mysql
 mysql> show variables like "Innodb_flush_log_at_trx_commit";
