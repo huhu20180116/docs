@@ -61,7 +61,7 @@ commit;
 
 如下图，数据插入成功后，表后面两列保存相应的版本号
 
-![121120042327111](../../images/optimize/mysql/121120042327111.Png)
+![121120042327111](http://ww3.sinaimg.cn/large/006tNc79gy1g5xatevo8kj31at0p8q8s.jpg)
 
 #### 3.1.2 删除
 
@@ -75,7 +75,7 @@ commit;
 
 如下图，id为2的数据行，删除版本号设置为当前事务ID(22)
 
-![121120042327115](../../images/optimize/mysql/121120042327115.Png)
+![121120042327115](http://ww2.sinaimg.cn/large/006tNc79gy1g5xath2aqkj30yo0nuwit.jpg)
 
 #### 3.1.3 修改
 
@@ -89,7 +89,7 @@ commit;
 
 修改操作是先做命中的数据行的copy，将原行数据的删除版本号的值设置为当前事务ID(33)
 
-![121120042327119](../../images/optimize/mysql/121120042327119.Png)
+![121120042327119](http://ww3.sinaimg.cn/large/006tNc79gy1g5xatk0vcgj317u0ouah3.jpg)
 
 
 
@@ -112,7 +112,7 @@ select * from teacher;
 commit;
 ```
 
-![121120042327123](../../images/optimize/mysql/121120042327123.Png)
+![121120042327123](http://ww2.sinaimg.cn/large/006tNc79gy1g5xatn74m3j319k0rrn49.jpg)
 
 ### 3.2 MySQL中版本控制案例
 
@@ -145,7 +145,7 @@ tx2 再执行3,4
 
 tx1 再执行2
 
-![121120042327130](../../images/optimize/mysql/121120042327130.Png)
+![121120042327130](http://ww2.sinaimg.cn/large/006tNc79gy1g5xatr1ii0j30zi0nnjv8.jpg)
 
 
 
@@ -155,7 +155,7 @@ tx2 先执行3，4
 
 tx1 再执行1，2
 
-![121120042327134](../../images/optimize/mysql/121120042327134.Png)
+![121120042327134](http://ww4.sinaimg.cn/large/006tNc79gy1g5xattyk43j30y10my434.jpg)
 
 案例二查询结果不是我们想要的，mysql的Innodb也不是这样做的。
 

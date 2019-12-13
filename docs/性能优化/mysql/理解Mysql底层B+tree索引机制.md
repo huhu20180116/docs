@@ -3,7 +3,7 @@
 
 **整体结构图**
 
-![img](../../images/optimize/mysql/wps4EA1.tmp.jpg)
+![img](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaumvwtgj30ne0d642s.jpg)
 
 - Connectors 
 
@@ -43,7 +43,7 @@
 
 **运行时机理图**
 
-![img](../../images/optimize/mysql/wps5B52.tmp.png)
+![img](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaupfwmdj30o60ddkjl.jpg)
 
 ## 理解Mysql底层B+tree索引机制
 
@@ -57,7 +57,7 @@
 
 索引是为了加速对表中数据行的检索而创建的一种分散存储的**数据结构**
 
-![120421194082031](../../images/optimize/mysql/120421194082031.png)
+![120421194082031](http://ww2.sinaimg.cn/large/006tNc79gy1g5xauszguoj30uq0910vl.jpg)
 
 ### 为什么要用索引？
 
@@ -79,7 +79,7 @@
 
 每个分支最多有两个（路）
 
-![120421194082038](../../images/optimize/mysql/120421194082038.Png)
+![120421194082038](http://ww3.sinaimg.cn/large/006tNc79gy1g5xauy5su0j30i30h10ur.jpg)
 
 #### 平衡二叉查找树，Balance binary search tree
 
@@ -99,7 +99,7 @@ X > 10 --> P2
 
 
 
-![120421194082041](../../images/optimize/mysql/120421194082041.Png)
+![120421194082041](http://ww1.sinaimg.cn/large/006tNc79gy1g5xav6q2pqj30so0gzwh2.jpg)
 
 一个磁盘块：
 
@@ -154,7 +154,7 @@ X > 35 --> P3
 
 
 
-![120421194082048](../../images/optimize/mysql/120421194082048.Png)
+![120421194082048](http://ww2.sinaimg.cn/large/006tNc79gy1g5xav9e3yej30yo0hjdkz.jpg)
 
 模拟查找关键字的过程：(省略)
 
@@ -174,7 +174,7 @@ MySQL的B+Tree
 66	<= X		--> P3
 ```
 
-![120421194082052](../../images/optimize/mysql/120421194082052.Png)
+![120421194082052](http://ww1.sinaimg.cn/large/006tNc79gy1g5xavdx89fj30uo0grtex.jpg)
 
 从上一节中的B-Tree结构图中可以看到每个节点中不仅包含数据的key值（关键字，子节点引用），还有data值（一整条记录的磁盘地址）。而每一个页的存储空间是有限的，如果data数据较大时将会导致每个节点（即一个页）能存储key的数量很小，当存储的数据量很大时同样会导致B-Tree的深度较大，增大查询时的磁盘I/O次数，进而影响查询效率。
 
@@ -215,7 +215,7 @@ MyISAM是默认[存储引擎](https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E5
 
 `.MYI` (`MYIndex`)文件存储表的索引。
 
-![120421194082063](../../images/optimize/mysql/120421194082063.Png)
+![120421194082063](http://ww4.sinaimg.cn/large/006tNc79gy1g5xavhraa6j310t0jpwkk.jpg)
 
 MyISAM的索引与行记录是分开存储的，叫做**非聚集索引**（UnClustered Index）。
 
@@ -246,13 +246,13 @@ InnoDB，是MySQL的数据库引擎之一，为[MySQL AB](https://baike.baidu.co
 
 `·ibd` 数据与索引文件；
 
-![120421194082071](../../images/optimize/mysql/120421194082071.Png)
+![120421194082071](http://ww4.sinaimg.cn/large/006tNc79gy1g5xavlthr9j30pd0jm410.jpg)
 
 简介（[百度百科](https://baike.baidu.com/item/innodb/8970025?fr=aladdin)）
 
 ​	事务型数据库的首选引擎，支持ACID事务，支持行级锁定。InnoDB是为处理巨大数据量时的最大性能设计。InnoDB存储引擎完全与MySQL服务器整合，InnoDB存储引擎为在主内存中缓存数据和索引而维持它自己的缓冲池。InnoDB存储它的表&索引在一个表空间中，表空间可以包含数个文件（或原始磁盘分区）。这与MyISAM表不同，比如在MyISAM表中每个表被存在分离的文件中。InnoDB 表可以是任何尺寸，即使在文件尺寸被限制为2GB的操作系统上。InnoDB默认地被包含在MySQL二进制分发中。Windows Essentials installer使InnoDB成为Windows上MySQL的默认表。
 
-![120421194082075](../../images/optimize/mysql/120421194082075-1543934044732.Png)
+![120421194082075](http://ww3.sinaimg.cn/large/006tNc79gy1g5xavoutahj31ah0kxgq1.jpg)
 
 MySQL的Innodb是以主键索引来组织数据结构的，**主键索引**与行记录是存储在一起的，故叫做**聚集索引**（Clustered Index）
 
@@ -280,7 +280,7 @@ InnoDB存储引擎中页的大小默认为16KB，一般表的主键类型为INT�
 
 ### Innodb VS Myisam
 
-![120421194082079](../../images/optimize/mysql/120421194082079.Png)
+![120421194082079](http://ww3.sinaimg.cn/large/006tNc79gy1g5xavror10j30po0bkwkp.jpg)
 
 
 
@@ -296,7 +296,7 @@ Myisam：主键索引和辅助键索引无区别
 
 找出离散性最好的列？
 
-![120421194082084](../../images/optimize/mysql/120421194082084.Png)
+![120421194082084](http://ww2.sinaimg.cn/large/006tNc79gy1g5xavvsws9j30jl0gkdhm.jpg)
 
 name的离散性最大，越大离散性越好
 结论：
@@ -307,7 +307,7 @@ name的离散性最大，越大离散性越好
 
 对索引中关键字进行计算（对比），一定是从左往右依次进行，且不可跳过
 
-![120421194082088](../../images/optimize/mysql/120421194082088.Png)
+![120421194082088](http://ww3.sinaimg.cn/large/006tNc79gy1g5xavz755ij30l70endh5.jpg)
 
 ### 注意避免冗余索引
 
@@ -393,7 +393,7 @@ select name,phoneNum from tbl_user where name = "张三"；
 
 **这里补充一个误区**
 
-![1549164072336](../..\images\optimize\mysql\1549164072336.png)
+![1549164072336](http://ww1.sinaimg.cn/large/006tNc79gy1g5xaxqx8yyj30u00i9ac1.jpg)
 
 `如果查询条件是 LIKE 'abc%‘，MySQL 将使用索引；如果查询条件是 LIKE '%abc’，MySQL 将不使用索引。`
 
@@ -407,7 +407,7 @@ select name,phoneNum from tbl_user where name like "%张三%";#这个是会走�
 
 如下图所示，执行一下EXPLAIN
 
-![1549164782958](../../\images\optimize\mysql\1549164782958.png)
+![1549164782958](http://ww2.sinaimg.cn/large/006tNc79gy1g5xay4bq26j30ns0bawez.jpg)
 
 ## 现在，你能都理解了么？
 

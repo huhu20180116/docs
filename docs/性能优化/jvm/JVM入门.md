@@ -2,17 +2,17 @@
 
 ## JVM的位置
 
-![022219094210020](../../images/optimize/jvm/022219094210020.Png)
+![022219094210020](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbq2yww8j30br0b8wf9.jpg)
 
 ## JVM体系结构概览
 
-![022219094210036](../../images/optimize/jvm/022219094210024.Png)
+![022219094210036](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbq5bukij31400u0jyx.jpg)
 
 # 类装载器
 
 负责加载class文件，class文件在文件开头有特定的文件标示，并且ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定
 
-![](../../images/optimize/jvm/022219094210028.Png)
+![](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbq75kzxj30ek0datap.jpg)
 
 ## 虚拟机自带的加载器
 
@@ -25,11 +25,11 @@
 
 java.lang.ClassLoader的子类，用户可以定制类的加载方式
 
-![022219094210032](../../images/optimize/jvm/022219094210032.Png)
+![022219094210032](http://ww2.sinaimg.cn/large/006tNc79gy1g5xbq966wgj309a0ba74a.jpg)
 
 # JVM运行时数据区
 
-![1551354032678](../../images/optimize/jvm/1551354032678.png)
+![1551354032678](http://ww2.sinaimg.cn/large/006tNc79gy1g5xbqaer8kj30pv0asgqg.jpg)
 
 ## 程序计数器PC Register
 
@@ -73,13 +73,13 @@ java.lang.ClassLoader的子类，用户可以定制类的加载方式
 栈溢出
 `StackOverflowError`,`OutOfMemory`
 
-![022219094210094](../../images/optimize/jvm/022219094210094.Png)
+![022219094210094](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbqdbff2j309y0gfdgy.jpg)
 
-![022219094210102](../../images/optimize/jvm/022219094210102.Png)
+![022219094210102](http://ww4.sinaimg.cn/large/006tNc79ly1g61hpd0xcmj302z04fmx6.jpg)
 
 **栈+堆+方法区的交互关系**
 
-![022219094210106](../../images/optimize/jvm/022219094210106.Png)
+![022219094210106](http://ww4.sinaimg.cn/large/006tNc79gy1g5xbqg1ihsj30j308a78z.jpg)
 
 HotSpot是使用指针的方式来访问对象
 
@@ -101,7 +101,7 @@ reference存储的就直接是对象的
 
 ### Heap堆(Java8)
 
-![022219094210121](../../images/optimize/jvm/022219094210121.Png)
+![022219094210121](http://ww2.sinaimg.cn/large/006tNc79gy1g5xbqikkb5j31560gcgxg.jpg)
 
 > 方法区（Method Area），是各个线程共享的内存区域，它用于存储虚拟机加载的：类信息+普通常量+静态常量+编译器编译后的代码等等，虽然JVM规范将方法区描述为堆的一个逻辑部分，但它却还有一个别名叫做Non-Heap(非堆)，目的就是要和堆分开。
 >
@@ -111,11 +111,11 @@ reference存储的就直接是对象的
 
 ### Java7
 
-![022219094210213](../../images/optimize/jvm/022219094210213.Png)
+![022219094210213](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbqknvyxj30uq0bfaaq.jpg)
 
 ### Java8
 
-JDK 1.8之后将最初的永久代取消了，由元空间取代。![022219094210217](../../images/optimize/jvm/022219094210217.Png)
+JDK 1.8之后将最初的永久代取消了，由元空间取代。![022219094210217](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbqo318ej30uq0bfjry.jpg)
 
 # 对象
 
@@ -149,7 +149,7 @@ JDK 1.8之后将最初的永久代取消了，由元空间取代。![02221909421
 > • Padding（对齐填充）
 >  8个字节的整数倍
 
-![](../../images/optimize/jvm/20190228201533.png)
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g5xbqsalz6j30o30bo41j.jpg)
 
 ## 对象的访问定位
 

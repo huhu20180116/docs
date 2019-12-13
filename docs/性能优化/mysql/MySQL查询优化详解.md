@@ -1,6 +1,6 @@
 # mysql 查询优化-查询执行的路径
 
-![120622313511055](../../images/optimize/mysql/120622313511055.Png)
+![120622313511055](http://ww2.sinaimg.cn/large/006tNc79gy1g5xau1cb1ij30rn0l644l.jpg)
 
 1. mysql 客户端/服务端通信
 2. 查询缓存
@@ -51,7 +51,7 @@ Mysql客户端与服务端的通信方式是“半双工”；
 
 可通过kill {id}的方式进行连接的杀掉
 
-![1544227841219](../../images/optimize/mysql/1544227841219.png)
+![1544227841219](http://ww1.sinaimg.cn/large/006tNc79gy1g5xau8dx8fj30fq06yglq.jpg)
 
 # 查询缓存
 

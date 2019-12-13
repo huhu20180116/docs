@@ -69,7 +69,7 @@ Spring 事务AOP编程：
 此时数据库中的id为1的记录age还是16,而事务B并不之情，以为age是18，此时就出问题了，所谓的脏读
 ```
 
-![120910194139032](../../images/optimize/mysql/120910194139032.Png)
+![120910194139032](http://ww2.sinaimg.cn/large/006tNc79gy1g5xas99vygj30oz0bsq57.jpg)
 
 ------
 
@@ -84,7 +84,7 @@ Spring 事务AOP编程：
 此时事务A两次查询不一样，在一个事务重复读数据内容不一样，所谓的 不可重复读
 ```
 
-![120910194139036](../../images/optimize/mysql/120910194139036.Png)
+![120910194139036](http://ww2.sinaimg.cn/large/006tNc79gy1g5xasajn5aj30p00bszmt.jpg)
 
 ------
 
@@ -98,7 +98,7 @@ Spring 事务AOP编程：
 此时事务A两次查询不一样，在一个事务重复读数据的数量一样，产生了幻觉，所谓的 幻读
 ```
 
-![120910194139040](../../images/optimize/mysql/120910194139040.Png)
+![120910194139040](http://ww2.sinaimg.cn/large/006tNc79gy1g5xasduw5uj30p00bsn0d.jpg)
 
 `脏读`：很好理解，事务中，读取到脏数据。
 

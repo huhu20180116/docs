@@ -2,7 +2,7 @@
 
 MySQL基于binlog的主从复制原理
 
-![1545066509789](../../images/optimize/mysql/1545066509789.png)
+![1545066509789](http://ww3.sinaimg.cn/large/006tNc79gy1g5xasop3foj30jm0ecjwo.jpg)
 
 1. master将操作记录到二进制日志(binary log)中（这些记录叫做二进制日志事件，binary log  events）
 2. Slave通过I/O Thread异步将master的binary log events拷贝到它的中继日志(relay log)；

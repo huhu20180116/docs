@@ -1,12 +1,3 @@
----
-title: Mycat分库分表案例demo
-typora-root-url: Mycat分库分表案例demo
-typora-copy-images-to: Mycat分库分表案例demo
-date: 2018-12-20 22:23:05
-tags: Mycat
-categories: Mycat
----
-
 # Mycat分库分表实战案例demo
 
 ## 环境准备
@@ -21,11 +12,7 @@ MySQL 5.7
 
 Mycat 1.6
 
-<!-- more -->
-
-
-
-![121723051595077](/../Mycat%E8%AF%A6%E8%A7%A3/121723051595077.Png)
+![121723051595077](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc2s0pahj30zv0q4dk2.jpg)
 
 ## 分库分表规则
 
@@ -126,7 +113,7 @@ CREATE TABLE `store` (
 
 执行完毕后如下
 
-![1545309851511](/../Mycat%E8%AF%A6%E8%A7%A3/1545309851511.png)
+![1545309851511](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc39exsqj305j091aa2.jpg)
 
 ## 配置conf文件
 
@@ -194,9 +181,9 @@ mysql>
 
 注意8066端口要开放，我这边直接关闭了防火墙。
 
-![1545312790521](/../Mycat%E8%AF%A6%E8%A7%A3/1545312790521.png)
+![1545312790521](http://ww1.sinaimg.cn/large/006tNc79gy1g5xc3j3xnrj30di0f9aab.jpg)
 
-![1545312626064](/../Mycat%E8%AF%A6%E8%A7%A3/1545312626064.png)
+![1545312626064](http://ww3.sinaimg.cn/large/006tNc79gy1g5xc3q1lgij305o09umx7.jpg)
 
 
 
@@ -265,17 +252,17 @@ Query OK, 1 row affected (0.00 sec)
 
 Mycat的users数据
 
-![1545313275374](/../Mycat%E8%AF%A6%E8%A7%A3/1545313275374.png)
+![1545313275374](http://ww1.sinaimg.cn/large/006tNc79gy1g5xc52z84ij30nn05wjrv.jpg)
 
 再看host1和host2上面的数据users数据
 
 66Master
 
-![1545313400976](/../Mycat%E8%AF%A6%E8%A7%A3/1545313400976.png)
+![1545313400976](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc5465m1j30lx0503yt.jpg)
 
 88Slave
 
-![1545313443778](/../Mycat%E8%AF%A6%E8%A7%A3/1545313443778.png)
+![1545313443778](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc56j167j30p4054glw.jpg)
 
 可以看到，已经按照我们制定的取模规则进行分片存储数据了。
 
@@ -316,19 +303,19 @@ Query OK, 1 row affected (0.01 sec)
 
 ##### Mycat上user_address数据
 
-![1545313809580](/../Mycat%E8%AF%A6%E8%A7%A3/1545313809580.png)
+![1545313809580](http://ww3.sinaimg.cn/large/006tNc79gy1g5xc59d00aj30lm07tdgg.jpg)
 
 
 
 ##### 66Master上user_address数据
 
-![1545313900367](/../Mycat%E8%AF%A6%E8%A7%A3/1545313900367.png)
+![1545313900367](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc5ba7q5j30ok06igm2.jpg)
 
 
 
 ##### 88Slave上user_address数据
 
-![1545313925773](/../Mycat%E8%AF%A6%E8%A7%A3/1545313925773.png)
+![1545313925773](http://ww4.sinaimg.cn/large/006tNc79gy1g5xc5d7zgpj30on0603yw.jpg)
 
 ### 全局表data_dictionary
 
@@ -370,19 +357,19 @@ Query OK, 1 row affected (0.02 sec)
 
 ##### 66Mycat上查看
 
-![1545314173497](/../Mycat%E8%AF%A6%E8%A7%A3/1545314173497.png)
+![1545314173497](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc5gnpv7j30ls06a0t7.jpg)
 
 
 
 ##### 66Master上查看data_dictionary
 
-![1545314266321](/../Mycat%E8%AF%A6%E8%A7%A3/1545314266321.png)
+![1545314266321](http://ww4.sinaimg.cn/large/006tNc79gy1g5xc5iuvcwj30n6067gm2.jpg)
 
 
 
 ##### 88Slave上查看data_dictionary
 
-![1545314294009](/../Mycat%E8%AF%A6%E8%A7%A3/1545314294009.png)
+![1545314294009](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc5k6nytj30lq0600t7.jpg)
 
 全局表每个节点的数据都一样
 
@@ -499,15 +486,15 @@ Navicat查看数据
 
 Mycat上
 
-![1545314824525](/../Mycat%E8%AF%A6%E8%A7%A3/1545314824525.png)
+![1545314824525](http://ww1.sinaimg.cn/large/006tNc79gy1g5xc5qrfq6j310n0htmzu.jpg)
 
 66Master上
 
-![1545314881873](/../Mycat%E8%AF%A6%E8%A7%A3/1545314881873.png)
+![1545314881873](http://ww1.sinaimg.cn/large/006tNc79gy1g5xc5t544hj30r40iv414.jpg)
 
 88Slave上
 
-![1545314940402](/../Mycat%E8%AF%A6%E8%A7%A3/1545314940402.png)
+![1545314940402](http://ww1.sinaimg.cn/large/006tNc79gy1g5xc5uird4j30r40ivacq.jpg)
 
 #### insertdb_store_employee.sql
 
@@ -523,13 +510,13 @@ Navicat查看数据
 
 66Mycat上
 
-![1545315220642](/../Mycat%E8%AF%A6%E8%A7%A3/1545315220642.png)
+![1545315220642](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc5z301rj30ox07xq3g.jpg)
 
 66Master上
 
-![1545315169868](/../Mycat%E8%AF%A6%E8%A7%A3/1545315169868.png)
+![1545315169868](http://ww3.sinaimg.cn/large/006tNc79gy1g5xc605320j30om06y0t9.jpg)
 
 88Slave上
 
-![1545315139723](/../Mycat%E8%AF%A6%E8%A7%A3/1545315139723.png)
+![1545315139723](http://ww4.sinaimg.cn/large/006tNc79gy1g5xc62gl4xj30lf07cq3g.jpg)
 

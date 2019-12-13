@@ -1,22 +1,10 @@
----
-title: Mycat之高可用方案
-typora-root-url: Mycat之高可用方案
-typora-copy-images-to: Mycat之高可用方案
-date: 2018-12-20 22:23:42
-tags: 
-- Mycat
-- 高可用
-- HAproxy
-categories: Mycat
----
-
 # Mycat宕机了怎么办
 
 基于Mycat分库分表案例demo，来说明Mycat高可用方案
 
 假如mycat所在机器宕机，就算mysql正常，对外提供的服务的mycat挂了之后，整个对外服务就失效了
 
-![1545316007782](/1545316007782.png)
+![1545316007782](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbzxgun6j30tm0g9aeu.jpg)
 
 我们对mycat集群即可
 
@@ -25,17 +13,17 @@ categories: Mycat
 |          | 四层负载均衡                                                 | 七层负载均衡                                                 |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 说明     | 四层负载均衡也称为四层交换机，它主要是通过分析IP层及TCP/UDP层的流量实现的基于IP加端口的负载均衡 | 七层负载均衡器也称为七层交换机，位于OSI（ Open System Interconnection ，开放式系统互联）的最高层，即应用层，此时负载均衡器支持多种应用协议，常见的有HTTP、FTP、SMTP等 |
-| 区别     | ![1545316525690](/1545316525690.png)                         | ![1545316549426](/1545316549426.png)                         |
+| 区别     | ![1545316525690](http://ww4.sinaimg.cn/large/006tNc79gy1g5xc0ohohtj305f02vt8h.jpg) | ![1545316549426](http://ww3.sinaimg.cn/large/006tNc79gy1g5xc0883hnj305e02t742.jpg) |
 | 效率     | 效率高，直接转发连接                                         | 效率较四层低，先接受连接，然后自己去处理                     |
 | 生活案例 | 假如你去公司找李二毛，传达室的老大爷直接告诉你右转直走2号楼自己找去。 | 假如你去公司找李二毛，上市公司前台MM跟你说稍等，然后前台MM自己去找李二毛，此时李二毛跟前台MM说让你等会，前台MM回来后，通知你稍等。类似于这样的传达 |
 
-![1545316893094](/1545316893094.png)
+![1545316893094](http://ww4.sinaimg.cn/large/006tNc79gy1g5xc0h5w9lj30y60ftae9.jpg)
 
 
 
 # 用keepalived的VRRP对外提供vip
 
-![1545317095290](/1545317095290.png)
+![1545317095290](http://ww2.sinaimg.cn/large/006tNc79gy1g5xc1fd8btj30x00eadgv.jpg)
 
 
 

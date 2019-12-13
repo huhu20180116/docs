@@ -1,13 +1,3 @@
----
-title: Mycat详解
-typora-root-url: Mycat详解
-typora-copy-images-to: Mycat详解
-date: 2018-12-19 23:29:15
-tags:
-- Mycat
-categories: Mycat
----
-
 # Mycat是什么
 
 - 一个彻底开源的，面向企业应用开发的大数据库集群
@@ -17,11 +7,9 @@ categories: Mycat
 - 结合传统数据库和新型分布式数据仓库的新一代企业级数据库产品
 - 一个新颖的数据库中间件产品
 
-![1545233781118](/1545233781118.png)
+![1545233781118](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbvvbmwdj30fs0aedgq.jpg)
 
 通俗点讲，应用层可以将它看作是一个数据库的代理（或者直接看成加强版数据库）
-
-<!-- more -->
 
 # Mycat名称解释
 
@@ -51,13 +39,13 @@ categories: Mycat
 
    节点主机（写、读节点主机）
 
-![121723051595077](/121723051595077.Png)
+![121723051595077](http://ww2.sinaimg.cn/large/006tNc79gy1g5xbw74gllj30zv0q4dk2.jpg)
 
 # Mycat目录
 
 ## windows
 
-![121723051595088](/121723051595088.Png)
+![121723051595088](http://ww1.sinaimg.cn/large/006tNc79gy1g5xbwbvq8qj30h105gdh7.jpg)
 
 ## linux
 
@@ -323,11 +311,11 @@ hashSlice hash预算位，即根据子字符串中int值 hash运算
 
 如下图所示
 
-![121723051595129](/121723051595129.Png)
+![121723051595129](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbwka29yj30hz0ddgq0.jpg)
 
 当node节点增加时，影响的范围将大量减少。如下图所示
 
-![121723051595133](/121723051595133.Png)
+![121723051595133](http://ww4.sinaimg.cn/large/006tNc79gy1g5xbwmyhsnj30jk0djwjk.jpg)
 
 ### 综合分片
 
@@ -381,12 +369,12 @@ partition-pattern.txt配置
 数据特点：
 活跃的数据热度较高规模可以预期，增长量比较稳定
 
-![1545239169634](/1545239169634.png)
+![1545239169634](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbwr7ttpj30na0a3gmh.jpg)
 
 数据特点：
 活跃的数据为历史数据，热度要求不高。规模可以预期，增长量比较稳定. 优势可定时清理或者迁移数据
 
-![1545239488121](/1545239488121.png)
+![1545239488121](http://ww4.sinaimg.cn/large/006tNc79gy1g5xbwuin7jj30dt086js1.jpg)
 
 ### 分片选择总结
 
@@ -491,17 +479,12 @@ show @@sysparam
 
 # Mycat弱XA事务机制
 
-| Mycat弱XA事务机制                    | Mycat弱XA事务机制                                            |
-| ------------------------------------ | ------------------------------------------------------------ |
-| ![1545315485461](/1545315485461.png) | 为什么2PC提交.
-1是2PC才会有事务管理器统一管理的机会；2尽可能晚地提交事务，让事务在提交前尽可能地完成所有能完成的工作，这样，最后的提交阶段将是耗时极短，耗时极短意味着操作失败的可能性也就降低
 
-XA 是一个两阶段提交协议，
-规定事务协调/管理器和资源管理器接口
-二阶段提交协议为了保证事务的一致性，
-不管是事务管理器还是各个资源管理器，
-每执行一步操作，都会记录日志，
-为出现故障后的恢复准备依据
+![1545315485461](http://ww3.sinaimg.cn/large/006tNc79gy1g5xbx9ybsbj30lw0fb0tw.jpg) 为什么2PC提交.1是2PC才会有事务管理器统一管理的机会；2尽可能晚地提交事务，让事务在提交前尽可能地完成所有能完成的工作，这样，最后的提交阶段将是耗时极短，耗时极短意味着操作失败的可能性也就降低
+
+XA 是一个两阶段提交协议，规定事务协调/管理器和资源管理器接口
+
+二阶段提交协议为了保证事务的一致性，不管是事务管理器还是各个资源管理器，每执行一步操作，都会记录日志，为出现故障后的恢复准备依据
 
 Mycat 第二阶段的提交没有做相关日志的记录，所以说他是一个弱XA的分布式事务解决方案 |
 
@@ -509,17 +492,23 @@ Mycat 第二阶段的提交没有做相关日志的记录，所以说他是一�
 
 # Mycat之mysqldump方式进行快速移植
 
-![1545315645493](/1545315645493.png)
+![1545315645493](http://ww2.sinaimg.cn/large/006tNc79gy1g5xbxvhbduj30vt0ev0tk.jpg)
 
 mysqldump方式
 
 导出数据
-mysqldump -uroot -p123456 -h192.168.8.137 -c db_user_old users > users.sql
+
+- mysqldump -uroot -p123456 -h192.168.8.137 -c db_user_old users > users.sql
+
 ER子表
-mysqldump -uroot -p123456 -h192.168.8.137 -c --skip-extended-insert db_user_old user_address > userAddress.sql
+
+- mysqldump -uroot -p123456 -h192.168.8.137 -c --skip-extended-insert db_user_old user_address > userAddress.sql
+
 导入
-mysql -h192.168.8.151 -uroot -p123456 -P8066  -f db_user < users.sql
-mysql -h192.168.8.151 -uroot -p123456 -P8066  -f db_user < userAddress.sql
+
+- mysql -h192.168.8.151 -uroot -p123456 -P8066  -f db_user < users.sql
+
+- mysql -h192.168.8.151 -uroot -p123456 -P8066  -f db_user < userAddress.sql
 
 # 附录
 

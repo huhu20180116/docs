@@ -69,7 +69,7 @@ commit/rollback
 
 会话A autocommit关闭
 
-![1544451397852](../../images/optimize/mysql/1544451397852.png)
+![1544451397852](http://ww4.sinaimg.cn/large/006tNc79gy1g5xakoedvpj30m20ba0t3.jpg)
 
 ```mysql
 ##1、当前会话A autocommit关闭
@@ -100,7 +100,7 @@ lastUpdate: 2018-12-01 15:39:50
 
 会话B autocommit采用默认的，未关闭
 
-![1544451620296](../../images/optimize/mysql/1544451620296.png)
+![1544451620296](http://ww4.sinaimg.cn/large/006tNc79gy1g5xamhdzyoj30jn0b7dg6.jpg)
 
 ```mysql
 mysql> select * from users where id =1\G
@@ -120,7 +120,7 @@ mysql> update users set age=19 where id =1;
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
 ```
 
-![1544451692396](../../images/optimize/mysql/1544451692396.png)
+![1544451692396](http://ww3.sinaimg.cn/large/006tNc79gy1g5xan0v2zaj30ex063dfv.jpg)
 
 **排他锁**:又称为写锁，简称**X**锁，排他锁不能与其他锁并存，如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的锁（共享锁、排他锁），只有该获取了排他锁的事务是可以对数据行进行读取和修改，（其他事务要读取数据可来自于快照//TODO 快照后面会将，待补充链接）
 
@@ -136,7 +136,7 @@ commit / rollback
 
 会话A
 
-![1544452646053](../../images/optimize/mysql/1544452646053.png)
+![1544452646053](http://ww4.sinaimg.cn/large/006tNc79gy1g5xanjtg6wj30m10bcjrp.jpg)
 
 ```mysql
 mysql> set session autocommit = OFF;
@@ -186,9 +186,9 @@ mysql> select * from users where id =1 lock in share mode\G
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
 ```
 
-![1544453204545](../../images/optimize/mysql/1544453204545.png)
+![1544453204545](http://ww1.sinaimg.cn/large/006tNc79gy1g5xanwst0qj30fc01e3yc.jpg)
 
-![1544453162814](../../images/optimize/mysql/1544453162814.png)
+![1544453162814](http://ww2.sinaimg.cn/large/006tNc79gy1g5xao55olrj30f501e0sk.jpg)
 
 ## Innodb到底锁了什么？
 
@@ -208,13 +208,13 @@ InnoDB的行锁是通过给索引上的索引项加锁来实现的。
 
 `idex_union_name&userLevel&age` 联合索引
 
-![1544453549354](../../images/optimize/mysql/1544453549354.png)
+![1544453549354](http://ww3.sinaimg.cn/large/006tNc79gy1g5xap0l9e4j30hx06jdg3.jpg)
 
 ex1:
 
 where条件在普通列上
 
-![1544453493730](../../images/optimize/mysql/1544453493730.png)
+![1544453493730](http://ww1.sinaimg.cn/large/006tNc79gy1g5xap4td9cj30g80aldfy.jpg)
 
 ex1:此时执行where id=2;where id=1;发现都是阻塞
 
@@ -224,17 +224,17 @@ ex2:
 
 where条件在主键上
 
-![1544454240886](../../images/optimize/mysql/1544454240886.png)
+![1544454240886](http://ww2.sinaimg.cn/large/006tNc79gy1g5xap9y6utj30c30ehjrj.jpg)
 
 发现 where id = 2  正常执行
 
-![1544454312774](../../images/optimize/mysql/1544454312774.png)
+![1544454312774](http://ww4.sinaimg.cn/large/006tNc79gy1g5xapcrmbwj30c205o74d.jpg)
 
 
 
 发现where id = 1 阻塞 超时了
 
-![1544454459603](../../images/optimize/mysql/1544454459603.png)
+![1544454459603](http://ww1.sinaimg.cn/large/006tNc79gy1g5xapeyrudj30cr05qdfx.jpg)
 
 ex3:
 
@@ -242,21 +242,21 @@ where条件在索引上
 
 seven 的行记录
 
-![1544454887749](../../images/optimize/mysql/1544454887749.png)
+![1544454887749](http://ww2.sinaimg.cn/large/006tNc79gy1g5xapheq4gj30jo0330sp.jpg)
 
 ![1544454544263](../../images/optimize/mysql/1544454544263.png)
 
 where uname='sever',阻塞
 
-![1544454642631](../../images/optimize/mysql/1544454642631.png)
+![1544454642631](http://ww4.sinaimg.cn/large/006tNc79gy1g5xapks8r4j30g5062jrp.jpg)
 
 where 条件id = 1,执行正常
 
-![1544454798410](../../images/optimize/mysql/1544454798410.png)
+![1544454798410](http://ww3.sinaimg.cn/large/006tNc79gy1g5xapnnfl3j30fb05lmxe.jpg)
 
 where 条件在seven 的id =4 ，阻塞了
 
-![1544455038483](../../images/optimize/mysql/1544455038483.png)
+![1544455038483](http://ww3.sinaimg.cn/large/006tNc79gy1g5xaprc1jgj30fh05z3yt.jpg)
 
 # 意向共享锁（IS）& 意向排他锁
 
@@ -343,7 +343,7 @@ mysql> select * from t;
 ​	**锁住记录+区间（左开右闭）**
 ​	当sql执行按照索引进行数据的检索时,查询条件为范围查找（between and、<、>等）并有数据命中则此时SQL语句加上的锁为Next-key locks，锁住索引的记录+区间（左开右闭）
 
-![120910194139074](../../images/optimize/mysql/120910194139074.Png)
+![120910194139074](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaqe86b6j30ve0andhc.jpg)
 
 
 
@@ -351,25 +351,25 @@ mysql> select * from t;
 
 ## 间隙锁（Gap）
 
-![120910194139079](../../images/optimize/mysql/120910194139079.Png)
+![120910194139079](http://ww3.sinaimg.cn/large/006tNc79gy1g5xaqfhvu4j30qu0bftau.jpg)
 
 Gap只在**RR**事务隔离级别存在
 
 ## 记录锁（Record）
 
-![120910194139083](../../images/optimize/mysql/120910194139083.Png)
+![120910194139083](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaqhyjmzj30pw08sta3.jpg)
 
 # 怎么利用锁解决脏读、不可重复读、幻读
 
-![120910194139087](../../images/optimize/mysql/120910194139087.Png)
+![120910194139087](http://ww1.sinaimg.cn/large/006tNc79gy1g5xaqjrcibj30t00c9ju4.jpg)
 
 
 
-![120910194139091](../../images/optimize/mysql/120910194139091.Png)
+![120910194139091](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaqm5m0rj30sa0cg774.jpg)
 
 
 
-![120910194139095](../../images/optimize/mysql/120910194139095.Png)
+![120910194139095](http://ww4.sinaimg.cn/large/006tNc79gy1g5xaqoelwzj30sz0bsadq.jpg)
 
 # 死锁介绍
 

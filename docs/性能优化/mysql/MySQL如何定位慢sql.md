@@ -186,7 +186,7 @@ mysql的自带工具[mysqldumpslow](https://www.olinux.org.cn/tag/mysqldumpslow)
 官方文档5.7版本地址：https://dev.mysql.com/doc/refman/5.7/en/mysqldumpslow.html
 参看官方文档可以略去本文。
 
-![MYSQLæ§è½è°ä¼ï¼å®æ¹mysqldumpslowåæMysql slow log](../../images/optimize/mysql/QQ截图20160328172049.jpg)
+![MYSQLæ§è½è°ä¼ï¼å®æ¹mysqldumpslowåæMysql slow log](http://ww4.sinaimg.cn/large/006tNc79gy1g5xasl6slsj30c30e10te.jpg)
 
 执行`mysqldumpslow –h`可以查看帮助信息。
 主要介绍两个参数-s和-t

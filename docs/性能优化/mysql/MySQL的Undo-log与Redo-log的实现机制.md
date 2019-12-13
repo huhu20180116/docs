@@ -34,7 +34,7 @@
 
 ​	事务A 若因意外rollback，会从Undo buffer中数据恢复（实现事务原子性）
 
-![121120042327141](../../images/optimize/mysql/121120042327141.Png)
+![121120042327141](http://ww3.sinaimg.cn/large/006tNc79gy1g5xaswwkb5j30t50fadjt.jpg)
 
 ## 1.2 当前读、快照读
 
@@ -66,7 +66,7 @@ Redo log的持久：
 
 ------
 
-![121120042327151](../../images/optimize/mysql/121120042327151.Png)
+![121120042327151](http://ww4.sinaimg.cn/large/006tNc79gy1g5xat1l7hfj30kz0iu42z.jpg)
 
 ## 2.2 Redo Log的落盘配置
 

@@ -2,7 +2,7 @@
 
 Java知识学习总结
 
-[![码云](https://img.shields.io/badge/Gitee-%E7%A0%81%E4%BA%91-yellow.svg)](https://gitee.com/qinxuewu) [![Github](https://img.shields.io/badge/Github-Github-red.svg)](https://github.com/a870439570)
+[![码云](https://img.shields.io/badge/Gitee-%E7%A0%81%E4%BA%91-yellow.svg)](https://gitee.com/) [![Github](https://img.shields.io/badge/Github-Github-red.svg)](https://github.com/yanzhaoyao)
 
 ## 设计模式
 
@@ -29,7 +29,18 @@ Java知识学习总结
 
 ## 分布式
 
-//TODO
+- [SpringBoot](分布式/springboot)
+  - SpringBoot自动装配机制
+  - SpringBoot核心原理
+- [Apche Zookeeper](分布式/zookeeper)
+  - zookeeper核心原理
+  - zookeeper的leder选举原理
+  - zookeeper的事物求情以及Watcher源码分析
+- [Apache Dubbo](/分布式/dubbo)
+- [Alibaba Nacos](分布式/nacos)
+
+- [Alibaba Sentinel](分布式/sentinel)
+  - 
 
 ## 存储 Storage
 ### MySQL
